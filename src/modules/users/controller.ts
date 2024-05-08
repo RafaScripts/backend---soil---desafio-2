@@ -20,6 +20,18 @@ export async function list(req: Request, res: Response){
         }
     */
 
+    /* #swagger.responses[500] = {
+            description: "Error",
+            content: {
+                "application/json": {
+                    schema:{
+                        $ref: "#/components/schemas/errorUserList"
+                    }
+                }
+            }
+        }
+    */
+
     try {
 
         const users = await UsersConsults.index();
@@ -32,16 +44,41 @@ export async function list(req: Request, res: Response){
 }
 
 export async function create(req: Request, res: Response){
-    const {name, email, password_hash, role} = req.body;
     // #swagger.tags = ['Users']
 
     /* #swagger.security = [{
            "bearerAuth": []
    }] */
 
+    /* #swagger.responses[200] = {
+           description: "Resultados encontrados.",
+           content: {
+               "application/json": {
+                   schema:{
+                       $ref: "#/components/schemas/userCreate"
+                   }
+               }
+           }
+       }
+   */
+
+    /* #swagger.responses[500] = {
+            description: "Error",
+            content: {
+                "application/json": {
+                    schema:{
+                        $ref: "#/components/schemas/errorUserList"
+                    }
+                }
+            }
+        }
+    */
+
+    const {name, email, password, role} = req.body;
+
     try {
 
-        const user = await UsersConsults.create({name, email, password_hash, role});
+        const user = await UsersConsults.create({name, email, password, role});
 
         return res.status(201).json(user);
 
@@ -51,17 +88,42 @@ export async function create(req: Request, res: Response){
 }
 
 export async function update(req: Request, res: Response){
-    const {id} = req.params;
-    const {name, email, password_hash, role} = req.body;
     // #swagger.tags = ['Users']
 
     /* #swagger.security = [{
            "bearerAuth": []
    }] */
 
+    /* #swagger.responses[200] = {
+           description: "Resultados encontrados.",
+           content: {
+               "application/json": {
+                   schema:{
+                       $ref: "#/components/schemas/userUpdate"
+                   }
+               }
+           }
+       }
+   */
+
+    /* #swagger.responses[500] = {
+            description: "Error",
+            content: {
+                "application/json": {
+                    schema:{
+                        $ref: "#/components/schemas/errorUserList"
+                    }
+                }
+            }
+        }
+    */
+
+    const {id} = req.params;
+    const {name, email, password, role} = req.body;
+
     try {
 
-        const user = await UsersConsults.update(id, {name, email, password_hash, role});
+        const user = await UsersConsults.update(id, {name, email, password, role});
 
         return res.status(200).json(user);
 
@@ -71,12 +133,13 @@ export async function update(req: Request, res: Response){
 }
 
 export async function remove(req: Request, res: Response){
-    const {id} = req.params;
     // #swagger.tags = ['Users']
 
     /* #swagger.security = [{
            "bearerAuth": []
    }] */
+
+    const {id} = req.params;
 
     try {
 

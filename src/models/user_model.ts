@@ -6,7 +6,7 @@ export enum Role {
 export interface UserCreate {
     name: string
     email: string
-    password_hash: string
+    password: string
     role: Role
 }
 

@@ -36,7 +36,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUserList"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -53,11 +60,28 @@
         ],
         "description": "",
         "responses": {
+          "200": {
+            "description": "Resultados encontrados.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userCreate"
+                }
+              }
+            }
+          },
           "201": {
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUserList"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -71,16 +95,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
+                  "description": {
                     "example": "any"
                   },
-                  "email": {
-                    "example": "any"
-                  },
-                  "password_hash": {
-                    "example": "any"
-                  },
-                  "role": {
+                  "content": {
                     "example": "any"
                   }
                 }
@@ -108,10 +126,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Resultados encontrados.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userUpdate"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUserList"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -125,16 +157,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
+                  "description": {
                     "example": "any"
                   },
-                  "email": {
-                    "example": "any"
-                  },
-                  "password_hash": {
-                    "example": "any"
-                  },
-                  "role": {
+                  "content": {
                     "example": "any"
                   }
                 }
@@ -197,12 +223,63 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "08/05/2024 18:52:19"
+              "example": "08/05/2024 20:04:00"
             },
             "updatedAt": {
               "type": "string",
-              "example": "08/05/2024 18:52:19"
+              "example": "08/05/2024 20:04:00"
             }
+          }
+        }
+      },
+      "errorUserList": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "undefined"
+          }
+        }
+      },
+      "userCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "example@example.com"
+          },
+          "roles": {
+            "type": "string",
+            "example": "USER"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678"
+          }
+        }
+      },
+      "userUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "example@example.com"
+          },
+          "roles": {
+            "type": "string",
+            "example": "USER"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678"
           }
         }
       }

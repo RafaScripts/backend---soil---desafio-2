@@ -19,7 +19,7 @@ class UsersConsults{
             data: {
                 name: data.name,
                 email: data.email,
-                password_hash: data.password_hash,
+                password_hash: data.password,
                 role: data.role
             }
         });
@@ -33,7 +33,7 @@ class UsersConsults{
             data: {
                 name: data.name,
                 email: data.email,
-                password_hash: data.password_hash,
+                password_hash: data.password,
                 role: data.role
             }
         });

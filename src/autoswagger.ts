@@ -29,7 +29,22 @@ const doc = {
                 roles: 'ADMIN',
                 createdAt: moment(Date.now()).format('DD/MM/YYYY HH:mm:ss'),
                 updatedAt: moment(Date.now()).format('DD/MM/YYYY HH:mm:ss')
-            }]
+            }],
+            errorUserList: {
+                error: 'undefined'
+            },
+            userCreate: {
+                name: 'John Doe',
+                email: 'example@example.com',
+                roles: 'USER',
+                password: '12345678'
+            },
+            userUpdate: {
+                name: 'John Doe',
+                email: 'example@example.com',
+                roles: 'USER',
+                password: '12345678'
+            }
         },
         securitySchemes:{
             bearerAuth: {
