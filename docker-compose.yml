@@ -1,0 +1,27 @@
+version: '3.8'
+
+networks:
+  soil-net:
+    external: true
+
+volumes:
+  postgres-data:
+
+services:
+  postgres:
+    build: .docker/database
+    image: postgres:16
+    container_name: soil-postgres
+    restart: always
+    shm_size: 128mb
+    networks:
+      -  soil-net
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - .docker/postgres-data:/var/lib/postgresql/data
+
