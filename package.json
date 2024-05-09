@@ -8,6 +8,8 @@
     "autodocs": "tsx src/autoswagger.ts"
   },
   "dependencies": {
+    "@prisma/client": "5.13.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "axios": "^1.6.8",
@@ -20,7 +22,6 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@prisma/client": "^5.13.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/moment": "^2.13.0",
     "prisma": "^5.13.0",

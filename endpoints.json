@@ -26,7 +26,7 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "Resultados encontrados.",
+            "description": "Lista de todos os usuarios.",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,18 +60,8 @@
         ],
         "description": "",
         "responses": {
-          "200": {
-            "description": "Resultados encontrados.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/userCreate"
-                }
-              }
-            }
-          },
           "201": {
-            "description": "Created"
+            "description": "resultado apos criar um usuario."
           },
           "500": {
             "description": "Error",
@@ -90,18 +80,11 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "example": "any"
-                  },
-                  "content": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/userCreate"
               }
             }
           }
@@ -125,15 +108,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Resultados encontrados.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/userUpdate"
-                }
-              }
-            }
+          "300": {
+            "description": "Multiple Choices"
           },
           "500": {
             "description": "Error",
@@ -152,18 +128,11 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "example": "any"
-                  },
-                  "content": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/userUpdate"
               }
             }
           }
@@ -223,11 +192,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "08/05/2024 20:04:00"
+              "example": "08/05/2024 23:56:33"
             },
             "updatedAt": {
               "type": "string",
-              "example": "08/05/2024 20:04:00"
+              "example": "08/05/2024 23:56:33"
             }
           }
         }
@@ -272,10 +241,6 @@
           "email": {
             "type": "string",
             "example": "example@example.com"
-          },
-          "roles": {
-            "type": "string",
-            "example": "USER"
           },
           "password": {
             "type": "string",

@@ -3,19 +3,49 @@ import {UserCreate} from "../models/user_model";
 
 class UsersConsults{
     index(){
-        return prisma.users.findMany();
+        return prisma.user.findMany({
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                password_hash: false,
+                role: true,
+                createdAt: true,
+                updatedAt: true
+            }
+        });
     }
 
-    searchById(id: any){
-        return prisma.users.findUnique({
+    listAllFavoriteGames(id: string): any{
+        return prisma.user.findFirst({
+            relationLoadStrategy: 'join',
+            where: {
+                id: id
+            },
+            include: {
+                favoriteGames: true
+            }
+        });
+    }
+
+    searchById(id: string){
+        return prisma.user.findUnique({
             where: {
                 id: id
             }
         });
     }
 
+    exist(email: string){
+        return prisma.user.count({
+            where: {
+                email: email
+            }
+        })
+    }
+
     create(data: UserCreate){
-        return prisma.users.create({
+        return prisma.user.create({
             data: {
                 name: data.name,
                 email: data.email,
@@ -25,22 +55,21 @@ class UsersConsults{
         });
     }
 
-    update(id: any, data: UserCreate){
-        return prisma.users.update({
+    update(id: any, data: {name: string, email: string, password: string}){
+        return prisma.user.update({
             where: {
                 id: id
             },
             data: {
                 name: data.name,
                 email: data.email,
-                password_hash: data.password,
-                role: data.role
+                password_hash: data.password
             }
         });
     }
 
     delete(id: any){
-        return prisma.users.delete({
+        return prisma.user.delete({
             where: {
                 id: id
             }
