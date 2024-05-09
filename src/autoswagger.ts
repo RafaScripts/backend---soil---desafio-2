@@ -20,6 +20,10 @@ const doc = {
             name: 'users',             // Tag name
             description: 'Usuarios'       // Tag description
         },
+        {
+            name: 'games',             // Tag name
+            description: 'Jogos'       // Tag description
+        }
     ],
     components: {
         schemas: {
@@ -43,6 +47,15 @@ const doc = {
                 name: 'John Doe',
                 email: 'example@example.com',
                 password: '12345678'
+            },
+            createGame: {
+                name: 'Game',
+                thumbnail: 'http://example.com',
+                rate: 3.5
+            },
+            favoriteGame: {
+                idGame: 'ed123ed',
+                idUser: 'wd123wd'
             }
         },
         securitySchemes:{

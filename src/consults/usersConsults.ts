@@ -75,6 +75,15 @@ class UsersConsults{
             }
         });
     }
+
+    favoriteGame(idGame: string, idUser: string){
+        return prisma.userFavoriteGame.create({
+            data: {
+                gameId: idGame,
+                userId: idUser
+            }
+        });
+    }
 }
 
 export default new UsersConsults;

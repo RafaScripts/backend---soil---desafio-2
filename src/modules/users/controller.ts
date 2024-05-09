@@ -3,7 +3,7 @@ import UsersConsults from "../../consults/usersConsults";
 import bcrypt from 'bcrypt';
 
 export async function list(req: Request, res: Response){
-    // #swagger.tags = ['Users']
+    // #swagger.tags = ['users']
 
     /* #swagger.security = [{
            "bearerAuth": []
@@ -45,7 +45,7 @@ export async function list(req: Request, res: Response){
 }
 
 export async function create(req: Request, res: Response){
-    // #swagger.tags = ['Users']
+    // #swagger.tags = ['users']
 
     /* #swagger.security = [{
            "bearerAuth": []
@@ -100,7 +100,7 @@ export async function create(req: Request, res: Response){
 }
 
 export async function update(req: Request, res: Response){
-    // #swagger.tags = ['Users']
+    // #swagger.tags = ['users']
 
     /* #swagger.security = [{
            "bearerAuth": []
@@ -147,7 +147,7 @@ export async function update(req: Request, res: Response){
 }
 
 export async function remove(req: Request, res: Response){
-    // #swagger.tags = ['Users']
+    // #swagger.tags = ['users']
 
     /* #swagger.security = [{
            "bearerAuth": []
@@ -161,6 +161,33 @@ export async function remove(req: Request, res: Response){
 
         return res.status(204).send();
 
+    }catch (e: any) {
+        return res.status(500).json({message: e.message})
+    }
+}
+
+export async function favoriteGame(req: Request, res: Response){
+    // #swagger.tags = ['users']
+
+    /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/favoriteGame"
+                    }
+                }
+            }
+        }
+    */
+
+    const {idGame, idUser} = req.body;
+
+    try {
+
+        await UsersConsults.favoriteGame(idGame, idUser);
+
+        return res.status(201).json('Game favorited');
     }catch (e: any) {
         return res.status(500).json({message: e.message})
     }

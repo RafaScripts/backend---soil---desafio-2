@@ -15,13 +15,17 @@
     {
       "name": "users",
       "description": "Usuarios"
+    },
+    {
+      "name": "games",
+      "description": "Jogos"
     }
   ],
   "paths": {
     "/api/v1/users/list": {
       "get": {
         "tags": [
-          "Users"
+          "users"
         ],
         "description": "",
         "responses": {
@@ -56,7 +60,7 @@
     "/api/v1/users/create": {
       "post": {
         "tags": [
-          "Users"
+          "users"
         ],
         "description": "",
         "responses": {
@@ -94,7 +98,7 @@
     "/api/v1/users/update/{id}": {
       "put": {
         "tags": [
-          "Users"
+          "users"
         ],
         "description": "",
         "parameters": [
@@ -108,8 +112,8 @@
           }
         ],
         "responses": {
-          "300": {
-            "description": "Multiple Choices"
+          "203": {
+            "description": "Non-Authoritative Information"
           },
           "500": {
             "description": "Error",
@@ -142,7 +146,7 @@
     "/api/v1/users/remove/{id}": {
       "delete": {
         "tags": [
-          "Users"
+          "users"
         ],
         "description": "",
         "parameters": [
@@ -169,6 +173,77 @@
           }
         ]
       }
+    },
+    "/api/v1/users/favorite/create": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/favoriteGame"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/games/list": {
+      "get": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/games/create": {
+      "post": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "jogo cadastrado"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createGame"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -192,11 +267,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "08/05/2024 23:56:33"
+              "example": "09/05/2024 10:48:56"
             },
             "updatedAt": {
               "type": "string",
-              "example": "08/05/2024 23:56:33"
+              "example": "09/05/2024 10:48:56"
             }
           }
         }
@@ -245,6 +320,36 @@
           "password": {
             "type": "string",
             "example": "12345678"
+          }
+        }
+      },
+      "createGame": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Game"
+          },
+          "thumbnail": {
+            "type": "string",
+            "example": "http://example.com"
+          },
+          "rate": {
+            "type": "number",
+            "example": 3.5
+          }
+        }
+      },
+      "favoriteGame": {
+        "type": "object",
+        "properties": {
+          "idGame": {
+            "type": "string",
+            "example": "ed123ed"
+          },
+          "idUser": {
+            "type": "string",
+            "example": "wd123wd"
           }
         }
       }

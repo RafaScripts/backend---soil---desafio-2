@@ -1,11 +1,13 @@
 import express from 'express';
-import routes from "./routes/routes";
+import routerUser from "./routes/routesUsers";
+import routerGames from "./routes/routesGames";
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/api/v1', routes);
+app.use('/api/v1', routerUser);
+app.use('/api/v1', routerGames);
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
