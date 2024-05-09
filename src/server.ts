@@ -1,8 +1,11 @@
 import express from 'express';
+import cors from 'cors';
 import routerUser from "./routes/routesUsers";
 import routerGames from "./routes/routesGames";
 
 const app = express();
+
+app.use(cors({origin: '*'}))
 
 app.use(express.json());
 

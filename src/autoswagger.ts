@@ -14,6 +14,10 @@ const doc = {
             url: 'http://localhost:3000',              // by default: 'http://localhost:3000'
             description: 'Development'       // by default: ''
         },
+        {
+            url: 'https://neat-signs-carry.loca.lt/',
+            description: 'tunnel developer'
+        }
     ],
     tags: [                   // by default: empty Array
         {
