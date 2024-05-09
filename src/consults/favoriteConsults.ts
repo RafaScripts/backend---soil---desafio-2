@@ -1,4 +1,5 @@
 import prisma from "../database";
+import {Game, GameCreate} from "../models/favorite_model";
 
 
 class GamesConsults{
@@ -24,7 +25,7 @@ class GamesConsults{
         });
     }
 
-    create(data: any){
+    create(data: GameCreate){
         return prisma.game.create({
             data: {
                 name: data.name,
@@ -32,6 +33,27 @@ class GamesConsults{
                 rate: data.rate
             }
         })
+    }
+
+    update(id: string, data: GameCreate){
+        return prisma.game.update({
+            where: {
+                id: id
+            },
+            data: {
+                name: data.name,
+                thumbnail: data.thumbnail,
+                rate: data.rate
+            }
+        });
+    }
+
+    delete(id: string){
+        return prisma.game.delete({
+            where: {
+                id: id
+            }
+        });
     }
 
     /*create(data: any){

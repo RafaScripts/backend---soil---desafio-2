@@ -9,13 +9,13 @@ volumes:
 
 services:
   postgres:
-    build: .docker/database
+    build: .docker/postgres
     image: postgres:16
-    container_name: soil-postgres
+    container_name: afasys-postgres
     restart: always
     shm_size: 128mb
     networks:
-      -  soil-net
+      - soil-net
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -23,5 +23,17 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - .docker/postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
 
+  backend:
+    build: .docker/backend
+    entrypoint: .docker/entrypoint.sh
+    container_name: soil-api
+    networks:
+      - soil-net  # Mantido conforme definido
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app

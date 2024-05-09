@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import routerUser from "./routes/routesUsers";
 import routerGames from "./routes/routesGames";
+import {firstGenerateUsers} from "./utils/firstGenerateUsers";
 
 const app = express();
 
@@ -12,6 +13,10 @@ app.use(express.json());
 app.use('/api/v1', routerUser);
 app.use('/api/v1', routerGames);
 
-app.listen(3000, () => {
+
+app.listen(3000, async () => {
+
+  await firstGenerateUsers();
+
   console.log('Server is running on port 3000');
 });

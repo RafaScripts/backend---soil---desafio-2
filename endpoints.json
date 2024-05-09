@@ -248,6 +248,136 @@
           }
         }
       }
+    },
+    "/api/v1/games/search": {
+      "get": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "game",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/games/search/{id}": {
+      "get": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/games/findWithUsers": {
+      "get": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/games/update/{id}": {
+      "put": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "203": {
+            "description": "Non-Authoritative Information"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createGame"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/games/delete/{id}": {
+      "delete": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "203": {
+            "description": "Non-Authoritative Information"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -271,11 +401,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "09/05/2024 11:01:25"
+              "example": "09/05/2024 16:05:38"
             },
             "updatedAt": {
               "type": "string",
-              "example": "09/05/2024 11:01:25"
+              "example": "09/05/2024 16:05:38"
             }
           }
         }
