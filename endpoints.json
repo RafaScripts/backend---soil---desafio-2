@@ -9,6 +9,10 @@
     {
       "url": "http://localhost:3000",
       "description": "Development"
+    },
+    {
+      "url": "https://neat-signs-carry.loca.lt/",
+      "description": "tunnel developer"
     }
   ],
   "tags": [
@@ -267,11 +271,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "09/05/2024 10:48:56"
+              "example": "09/05/2024 10:58:54"
             },
             "updatedAt": {
               "type": "string",
-              "example": "09/05/2024 10:48:56"
+              "example": "09/05/2024 10:58:54"
             }
           }
         }
