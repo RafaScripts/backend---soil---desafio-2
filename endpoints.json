@@ -30,6 +30,32 @@
     }
   ],
   "paths": {
+    "/api/v1/users/login": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/signin"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/users/create": {
       "post": {
         "tags": [
@@ -443,11 +469,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "10/05/2024 02:30:39"
+              "example": "10/05/2024 02:33:34"
             },
             "updatedAt": {
               "type": "string",
-              "example": "10/05/2024 02:30:39"
+              "example": "10/05/2024 02:33:34"
             }
           }
         }

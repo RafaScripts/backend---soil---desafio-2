@@ -1,6 +1,6 @@
 import express from "express";
 
-import {list, create, update, remove, favoriteGame} from "../modules/users/controller";
+import {list, create, update, remove, favoriteGame, signin} from "../modules/users/controller";
 import admin_check from "../middlewares/admin";
 import user_check from "../middlewares/user";
 
@@ -8,6 +8,7 @@ import user_check from "../middlewares/user";
 const routerUser = express.Router();
 
 //Users Routes
+routerUser.post('/users/login', signin);
 routerUser.post('/users/create', create);
 routerUser.put('/users/update/:id', user_check, update);
 routerUser.post('/users/favorite/create', user_check, favoriteGame);
