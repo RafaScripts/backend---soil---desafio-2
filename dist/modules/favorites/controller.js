@@ -9,6 +9,9 @@ const rawdb_1 = __importDefault(require("../rawdb/rawdb"));
 const usersConsults_1 = __importDefault(require("../../consults/usersConsults"));
 async function list(req, res) {
     // #swagger.tags = ['games']
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
     try {
         const games = await favoriteConsults_1.default.index();
         return res.status(200).json(games);
@@ -20,6 +23,9 @@ async function list(req, res) {
 exports.list = list;
 async function create(req, res) {
     // #swagger.tags = ['games']
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
     /*  #swagger.requestBody = {
             required: true,
             content: {
@@ -50,6 +56,9 @@ async function create(req, res) {
 exports.create = create;
 async function searchGame(req, res) {
     // #swagger.tags = ['games']
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
     /* #swagger.parameters['game'] = {
             in: 'query',
             required: true,
@@ -68,6 +77,9 @@ async function searchGame(req, res) {
 exports.searchGame = searchGame;
 async function searchById(req, res) {
     // #swagger.tags = ['games']
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
     /* #swagger.parameters['id'] = {
             in: 'path',
             required: true,
@@ -86,6 +98,9 @@ async function searchById(req, res) {
 exports.searchById = searchById;
 async function findWithUsers(req, res) {
     // #swagger.tags = ['games']
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
     try {
         const games = await favoriteConsults_1.default.findWithUsers();
         return res.status(200).json(games);
@@ -97,6 +112,9 @@ async function findWithUsers(req, res) {
 exports.findWithUsers = findWithUsers;
 async function updateGame(req, res) {
     // #swagger.tags = ['games']
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
     /* #swagger.parameters['id'] = {
             in: 'path',
             required: true,
@@ -127,6 +145,9 @@ async function updateGame(req, res) {
 exports.updateGame = updateGame;
 async function deleteGame(req, res) {
     // #swagger.tags = ['games']
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
     /* #swagger.parameters['id'] = {
             in: 'path',
             required: true,

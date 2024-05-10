@@ -18,8 +18,12 @@ const doc = {
             description: 'Development' // by default: ''
         },
         {
-            url: 'https://neat-signs-carry.loca.lt',
+            url: 'https://macbook-pro-de-lais.tail5dcec.ts.net',
             description: 'tunnel developer'
+        },
+        {
+            url: 'http://100.70.109.120:3000',
+            description: 'Tailscale'
         }
     ],
     tags: [
@@ -47,7 +51,6 @@ const doc = {
             userCreate: {
                 name: 'John Doe',
                 email: 'example@example.com',
-                roles: 'USER',
                 password: '12345678'
             },
             userUpdate: {
@@ -63,6 +66,10 @@ const doc = {
             favoriteGame: {
                 idGame: 'ed123ed',
                 idUser: 'wd123wd'
+            },
+            signin: {
+                email: 'user@user.com',
+                password: 'user123'
             }
         },
         securitySchemes: {

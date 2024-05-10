@@ -1,18 +1,22 @@
 import UsersConsults from "../consults/usersConsults";
 import {Role} from "../models/user_model";
+import bcrypt from "bcrypt";
 
 export async function firstGenerateUsers(){
+    let hashadmin = await bcrypt.hash('admin', 8);
+    let hashuser = await bcrypt.hash('user123', 8);
+
     const adm = {
         name: 'jhon',
-        email: 'admin@admin.com',
-        password: 'admin',
+        email: 'admin2@admin2.com',
+        password: hashadmin,
         role: Role['ADMIN']
     }
 
     const user = {
         name: 'jhon',
-        email: 'user@user.com',
-        password: 'user123',
+        email: 'user2@user2.com',
+        password: hashuser,
     }
 
     let existAdm = await UsersConsults.exist(adm.email);

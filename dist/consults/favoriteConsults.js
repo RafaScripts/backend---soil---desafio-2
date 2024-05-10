@@ -19,7 +19,16 @@ class GamesConsults {
         return database_1.default.game.findMany({
             relationLoadStrategy: 'join',
             include: {
-                users: true
+                users: {
+                    include: {
+                        user: {
+                            select: {
+                                name: true,
+                                email: true
+                            }
+                        }
+                    }
+                }
             }
         });
     }

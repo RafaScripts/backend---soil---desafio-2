@@ -36,6 +36,13 @@ class UsersConsults {
             }
         });
     }
+    searchByEmail(email) {
+        return database_1.default.user.findUnique({
+            where: {
+                email: email
+            }
+        });
+    }
     exist(email) {
         return database_1.default.user.count({
             where: {

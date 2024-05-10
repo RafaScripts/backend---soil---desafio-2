@@ -23,6 +23,6 @@ export default async function user_check(req: Request, res: Response, next: Next
         return next();
 
     }catch (e: any) {
-        return res.json(401).json(e.message);
+        return res.status(401).json(e.message);
     }
 }
