@@ -63,6 +63,10 @@ const doc = {
             favoriteGame: {
                 idGame: 'ed123ed',
                 idUser: 'wd123wd'
+            },
+            signin: {
+                email: 'user@user.com',
+                password: 'user123'
             }
         },
         securitySchemes:{

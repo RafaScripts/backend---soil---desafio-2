@@ -469,11 +469,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "10/05/2024 02:33:34"
+              "example": "10/05/2024 02:35:36"
             },
             "updatedAt": {
               "type": "string",
-              "example": "10/05/2024 02:33:34"
+              "example": "10/05/2024 02:35:36"
             }
           }
         }
@@ -548,6 +548,19 @@
           "idUser": {
             "type": "string",
             "example": "wd123wd"
+          }
+        }
+      },
+      "signin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "user@user.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "user123"
           }
         }
       }
