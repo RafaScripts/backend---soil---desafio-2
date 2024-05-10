@@ -15,7 +15,7 @@ const doc = {
             description: 'Development'       // by default: ''
         },
         {
-            url: 'https://neat-signs-carry.loca.lt',
+            url: 'https://macbook-pro-de-lais.tail5dcec.ts.net',
             description: 'tunnel developer'
         },
         {
