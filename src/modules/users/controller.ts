@@ -227,6 +227,10 @@ export async function remove(req: Request, res: Response){
 export async function favoriteGame(req: Request, res: Response){
     // #swagger.tags = ['users']
 
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
+
     /*  #swagger.requestBody = {
             required: true,
             content: {
