@@ -44,7 +44,6 @@ const doc = {
             userCreate: {
                 name: 'John Doe',
                 email: 'example@example.com',
-                roles: 'USER',
                 password: '12345678'
             },
             userUpdate: {

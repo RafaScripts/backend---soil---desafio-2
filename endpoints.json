@@ -26,41 +26,6 @@
     }
   ],
   "paths": {
-    "/api/v1/users/list": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "Lista de todos os usuarios.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/userList"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorUserList"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
     "/api/v1/users/create": {
       "post": {
         "tags": [
@@ -147,6 +112,105 @@
         }
       }
     },
+    "/api/v1/users/favorite/create": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/favoriteGame"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/list": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Lista de todos os usuarios.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userList"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUserList"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/users/create": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "resultado apos criar um usuario."
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorUserList"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userCreate"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/users/remove/{id}": {
       "delete": {
         "tags": [
@@ -176,32 +240,6 @@
             "bearerAuth": []
           }
         ]
-      }
-    },
-    "/api/v1/users/favorite/create": {
-      "post": {
-        "tags": [
-          "users"
-        ],
-        "description": "",
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/favoriteGame"
-              }
-            }
-          }
-        }
       }
     },
     "/api/v1/games/list": {
@@ -401,11 +439,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "09/05/2024 16:05:38"
+              "example": "10/05/2024 02:30:39"
             },
             "updatedAt": {
               "type": "string",
-              "example": "09/05/2024 16:05:38"
+              "example": "10/05/2024 02:30:39"
             }
           }
         }
@@ -429,10 +467,6 @@
           "email": {
             "type": "string",
             "example": "example@example.com"
-          },
-          "roles": {
-            "type": "string",
-            "example": "USER"
           },
           "password": {
             "type": "string",

@@ -36,6 +36,14 @@ class UsersConsults{
         });
     }
 
+    searchByEmail(email: string){
+        return prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        });
+    }
+
     exist(email: string){
         return prisma.user.count({
             where: {
