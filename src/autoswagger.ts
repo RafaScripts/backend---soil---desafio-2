@@ -17,6 +17,10 @@ const doc = {
         {
             url: 'https://neat-signs-carry.loca.lt',
             description: 'tunnel developer'
+        },
+        {
+            url: 'http://100.70.109.120:3000',
+            description: 'Tailscale'
         }
     ],
     tags: [                   // by default: empty Array
