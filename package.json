@@ -23,7 +23,6 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/moment": "^2.13.0",
     "prisma": "^5.13.0",
