@@ -1,6 +1,6 @@
 import express from "express";
 
-import {list, create, update, remove, favoriteGame, signin} from "../modules/users/controller";
+import {list, create, update, remove, favoriteGame, signin, createAdmin} from "../modules/users/controller";
 import admin_check from "../middlewares/admin";
 import user_check from "../middlewares/user";
 
@@ -16,7 +16,7 @@ routerUser.post('/users/favorite/create', user_check, favoriteGame);
 
 //Admin
 routerUser.get('/users/list', admin_check, list);
-routerUser.post('/admin/users/create', admin_check, create);
+routerUser.post('/admin/users/create', admin_check, createAdmin);
 routerUser.delete('/users/remove/:id', admin_check, remove);
 
 export default routerUser;

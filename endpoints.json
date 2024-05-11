@@ -394,6 +394,33 @@
         ]
       }
     },
+    "/api/v1/games/listbyid/{id}": {
+      "get": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": []
+      }
+    },
     "/api/v1/games/findWithUsers": {
       "get": {
         "tags": [
@@ -509,11 +536,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "10/05/2024 23:04:57"
+              "example": "11/05/2024 11:51:13"
             },
             "updatedAt": {
               "type": "string",
-              "example": "10/05/2024 23:04:57"
+              "example": "11/05/2024 11:51:13"
             }
           }
         }
@@ -567,6 +594,10 @@
           "name": {
             "type": "string",
             "example": "Game"
+          },
+          "platform": {
+            "type": "string",
+            "example": "pc"
           },
           "thumbnail": {
             "type": "string",

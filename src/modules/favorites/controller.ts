@@ -42,10 +42,10 @@ export async function create(req: Request, res: Response){
         }
     */
 
-    const {name, thumbnail, rate, idUser} = req.body;
+    const {name, thumbnail, rate, platform, idUser} = req.body;
 
     try {
-        const game = await GamesConsults.create({name, thumbnail, rate});
+        const game = await GamesConsults.create({name, thumbnail, rate, platform});
 
         if(idUser){
             await UsersConsults.favoriteGame(idUser, game.id);
