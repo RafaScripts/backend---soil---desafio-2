@@ -19,13 +19,29 @@ class UsersConsults {
         });
     }
     listAllFavoriteGames(id) {
-        return database_1.default.user.findFirst({
+        return database_1.default.user.findUnique({
             relationLoadStrategy: 'join',
             where: {
                 id: id
             },
+            select: {
+                id: true,
+                name: true,
+                email: true
+            },
             include: {
-                favoriteGames: true
+                favoriteGames: {
+                    include: {
+                        game: {
+                            select: {
+                                id: true,
+                                name: true,
+                                thumbnail: true,
+                                rate: true
+                            }
+                        }
+                    }
+                }
             }
         });
     }

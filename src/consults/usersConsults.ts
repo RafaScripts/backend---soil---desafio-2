@@ -17,13 +17,29 @@ class UsersConsults{
     }
 
     listAllFavoriteGames(id: string): any{
-        return prisma.user.findFirst({
+        return prisma.user.findUnique({
             relationLoadStrategy: 'join',
             where: {
                 id: id
             },
+            select: {
+                id: true,
+                name: true,
+                email: true
+            },
             include: {
-                favoriteGames: true
+                favoriteGames: {
+                    include: {
+                        game: {
+                            select: {
+                                id: true,
+                                name: true,
+                                thumbnail: true,
+                                rate: true
+                            }
+                        }
+                    }
+                }
             }
         });
     }

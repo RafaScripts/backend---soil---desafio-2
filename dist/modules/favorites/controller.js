@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteGame = exports.updateGame = exports.findWithUsers = exports.searchById = exports.searchGame = exports.create = exports.list = void 0;
+exports.deleteGame = exports.updateGame = exports.findGamesOfUser = exports.findWithUsers = exports.searchById = exports.searchGame = exports.create = exports.list = void 0;
 const favoriteConsults_1 = __importDefault(require("../../consults/favoriteConsults"));
 const rawdb_1 = __importDefault(require("../rawdb/rawdb"));
 const usersConsults_1 = __importDefault(require("../../consults/usersConsults"));
@@ -110,6 +110,28 @@ async function findWithUsers(req, res) {
     }
 }
 exports.findWithUsers = findWithUsers;
+async function findGamesOfUser(req, res) {
+    // #swagger.tags = ['games']
+    /* #swagger.security
+    - bearerAuth: []
+     */
+    /* #swagger.parameters['id'] = {
+            in: 'path',
+            required: true,
+            type: 'string'
+        }
+
+     */
+    const { id } = req.params;
+    try {
+        const games = await usersConsults_1.default.listAllFavoriteGames(id);
+        return res.status(200).json(games);
+    }
+    catch (error) {
+        return res.status(400).json({ message: error.message });
+    }
+}
+exports.findGamesOfUser = findGamesOfUser;
 async function updateGame(req, res) {
     // #swagger.tags = ['games']
     /* #swagger.security = [{

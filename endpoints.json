@@ -509,11 +509,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "10/05/2024 02:58:21"
+              "example": "10/05/2024 23:04:57"
             },
             "updatedAt": {
               "type": "string",
-              "example": "10/05/2024 02:58:21"
+              "example": "10/05/2024 23:04:57"
             }
           }
         }

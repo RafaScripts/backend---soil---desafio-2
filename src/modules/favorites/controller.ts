@@ -118,6 +118,32 @@ export async function findWithUsers(req: Request, res: Response){
     }
 }
 
+export async function findGamesOfUser(req: Request, res: Response){
+    // #swagger.tags = ['games']
+
+    /* #swagger.security
+    - bearerAuth: []
+     */
+
+    /* #swagger.parameters['id'] = {
+            in: 'path',
+            required: true,
+            type: 'string'
+        }
+
+     */
+
+    const {id} = req.params;
+
+    try {
+        const games = await UsersConsults.listAllFavoriteGames(id);
+        return res.status(200).json(games);
+    } catch (error: any) {
+        return res.status(400).json({message: error.message});
+    }
+
+}
+
 export async function updateGame(req: Request, res: Response){
     // #swagger.tags = ['games']
 

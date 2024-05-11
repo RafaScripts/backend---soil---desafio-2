@@ -13,6 +13,7 @@ routerGames.get('/games/list', user_1.default, controller_1.list);
 routerGames.post('/games/create', user_1.default, controller_1.create);
 routerGames.get('/games/search', user_1.default, controller_1.searchGame);
 routerGames.get('/games/search/:id', user_1.default, controller_1.searchById);
+routerGames.get('/games/listbyid/:id', user_1.default, controller_1.findGamesOfUser);
 //Admin Routes
 routerGames.get('/games/findWithUsers', admin_1.default, controller_1.findWithUsers);
 routerGames.put('/games/update/:id', admin_1.default, controller_1.updateGame);

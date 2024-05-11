@@ -1,6 +1,6 @@
 import express from "express";
 
-import {list, create, searchGame, searchById, deleteGame, updateGame, findWithUsers} from "../modules/favorites/controller";
+import {list, create, searchGame, searchById, deleteGame, updateGame, findWithUsers, findGamesOfUser} from "../modules/favorites/controller";
 import admin_check from "../middlewares/admin";
 import user_check from "../middlewares/user";
 
@@ -11,6 +11,7 @@ routerGames.get('/games/list', user_check, list);
 routerGames.post('/games/create', user_check, create);
 routerGames.get('/games/search', user_check, searchGame);
 routerGames.get('/games/search/:id', user_check, searchById);
+routerGames.get('/games/listbyid/:id', user_check, findGamesOfUser);
 
 //Admin Routes
 routerGames.get('/games/findWithUsers', admin_check, findWithUsers);
