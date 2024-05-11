@@ -15,6 +15,6 @@ routerUser.put('/users/update/:id', user_1.default, controller_1.update);
 routerUser.post('/users/favorite/create', user_1.default, controller_1.favoriteGame);
 //Admin
 routerUser.get('/users/list', admin_1.default, controller_1.list);
-routerUser.post('/admin/users/create', admin_1.default, controller_1.create);
+routerUser.post('/admin/users/create', admin_1.default, controller_1.createAdmin);
 routerUser.delete('/users/remove/:id', admin_1.default, controller_1.remove);
 exports.default = routerUser;

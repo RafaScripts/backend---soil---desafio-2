@@ -121,9 +121,9 @@ export async function findWithUsers(req: Request, res: Response){
 export async function findGamesOfUser(req: Request, res: Response){
     // #swagger.tags = ['games']
 
-    /* #swagger.security
-    - bearerAuth: []
-     */
+    /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
 
     /* #swagger.parameters['id'] = {
             in: 'path',

@@ -41,9 +41,9 @@ async function create(req, res) {
             description: "jogo cadastrado"
         }
     */
-    const { name, thumbnail, rate, idUser } = req.body;
+    const { name, thumbnail, rate, platform, idUser } = req.body;
     try {
-        const game = await favoriteConsults_1.default.create({ name, thumbnail, rate });
+        const game = await favoriteConsults_1.default.create({ name, thumbnail, rate, platform });
         if (idUser) {
             await usersConsults_1.default.favoriteGame(idUser, game.id);
         }

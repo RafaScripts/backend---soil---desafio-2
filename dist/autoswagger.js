@@ -60,6 +60,7 @@ const doc = {
             },
             createGame: {
                 name: 'Game',
+                platform: 'pc',
                 thumbnail: 'http://example.com',
                 rate: 3.5
             },
