@@ -17,29 +17,14 @@ class UsersConsults{
     }
 
     listAllFavoriteGames(id: string): any{
-        return prisma.user.findUnique({
+        //@ts-ignore
+        return prisma.userFavoriteGame.findMany({
             relationLoadStrategy: 'join',
             where: {
-                id: id
-            },
-            select: {
-                id: true,
-                name: true,
-                email: true
+                userId: id
             },
             include: {
-                favoriteGames: {
-                    include: {
-                        game: {
-                            select: {
-                                id: true,
-                                name: true,
-                                thumbnail: true,
-                                rate: true
-                            }
-                        }
-                    }
-                }
+                game: true
             }
         });
     }
@@ -103,8 +88,17 @@ class UsersConsults{
     favoriteGame(idGame: string, idUser: string){
         return prisma.userFavoriteGame.create({
             data: {
-                gameId: idGame,
-                userId: idUser
+                userId: idUser,
+                gameId: idGame
+            }
+        });
+    }
+
+    existFavorite(idGame: string, idUser: string){
+        return prisma.userFavoriteGame.count({
+            where: {
+                userId: idUser,
+                gameId: idGame
             }
         });
     }

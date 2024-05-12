@@ -9,5 +9,5 @@ npm uninstall bcrypt
 npm uninstall @types/bcrypt
 npm i bcrypt
 npm i --save-dev @types/bcrypt
-npm run build
-npm start
+# npm run build
+npm run dev

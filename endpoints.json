@@ -425,6 +425,37 @@
         ]
       }
     },
+    "/api/v1/games/favorite/delete/{id}": {
+      "delete": {
+        "tags": [
+          "games"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "203": {
+            "description": "Non-Authoritative Information"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/games/findWithUsers": {
       "get": {
         "tags": [
@@ -540,11 +571,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "11/05/2024 11:56:08"
+              "example": "11/05/2024 22:07:45"
             },
             "updatedAt": {
               "type": "string",
-              "example": "11/05/2024 11:56:08"
+              "example": "11/05/2024 22:07:45"
             }
           }
         }

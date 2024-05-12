@@ -2,6 +2,7 @@ import {Request, Response} from "express";
 import GamesConsults from "../../consults/favoriteConsults";
 import rawdb from "../rawdb/rawdb";
 import UsersConsults from "../../consults/usersConsults";
+import {name} from "cors";
 
 export async function list(req: Request, res: Response){
     // #swagger.tags = ['games']
@@ -42,13 +43,15 @@ export async function create(req: Request, res: Response){
         }
     */
 
-    const {name, thumbnail, rate, platform, idUser} = req.body;
+    const {name, thumbnail, rate, platform} = req.body;
 
     try {
-        const game = await GamesConsults.create({name, thumbnail, rate, platform});
-
-        if(idUser){
-            await UsersConsults.favoriteGame(idUser, game.id);
+        const exist = await GamesConsults.exist(name);
+        let game;
+        if(exist <= 0){
+            game = await GamesConsults.create({name, thumbnail, rate, platform});
+        }else {
+            game = await GamesConsults.findByName(name);
         }
 
         return res.status(201).json(game);
@@ -171,11 +174,11 @@ export async function updateGame(req: Request, res: Response){
     */
 
     const {id} = req.params;
-    const {name, thumbnail, rate} = req.body;
+    const {name, thumbnail, platform, rate} = req.body;
 
     try {
 
-        const game = await GamesConsults.update(id, {name, thumbnail, rate});
+        const game = await GamesConsults.update(id, {platform, name, thumbnail, rate});
 
         return res.status(203).json('Game Updated');
 
@@ -205,5 +208,29 @@ export async function deleteGame(req: Request, res: Response){
         return res.status(203).json('Game Deleted');
     }catch (e: any) {
         return res.status(500).json({message: e.message})
+    }
+}
+
+export async function removeFavorite(req: Request, res: Response){
+    // #swagger.tags = ['games']
+
+    /* #swagger.security
+
+     */
+
+    /* #swagger.parameters['idFavorite'] = {
+            in: 'path',
+            required: true,
+            type: 'string'
+        }
+     */
+
+    const {idFavorite} = req.params;
+
+    try {
+        await GamesConsults.removeFavorite(idFavorite);
+        return res.status(203).json('Favorite Deleted');
+    }catch (e: any) {
+        return res.status(400).json({message: e.message});
     }
 }

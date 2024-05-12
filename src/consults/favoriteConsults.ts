@@ -16,22 +16,28 @@ class GamesConsults{
         });
     }
 
+    findByName(name: string){
+        return prisma.game.findMany({
+            where: {
+                name: name
+            }
+        });
+    }
+
     findWithUsers(){
+
+        //@ts-ignore
         return prisma.game.findMany({
             relationLoadStrategy: 'join',
             include: {
                 users: {
                     include: {
-                        user: {
-                            select: {
-                                name: true,
-                                email: true
-                            }
-                        }
+                        user: true
                     }
                 }
             }
         });
+
     }
 
     create(data: GameCreate){
@@ -39,9 +45,18 @@ class GamesConsults{
             data: {
                 name: data.name,
                 thumbnail: data.thumbnail,
+                platform: data.platform,
                 rate: data.rate
             }
         })
+    }
+
+    exist(name: string){
+        return prisma.game.count({
+            where: {
+                name: name
+            }
+        });
     }
 
     update(id: string, data: GameCreate){
@@ -65,31 +80,13 @@ class GamesConsults{
         });
     }
 
-    /*create(data: any){
-        return prisma.favoriteGames.create({
-            data: {
-
+    removeFavorite(idFavorite: string){
+        return prisma.userFavoriteGame.delete({
+            where:{
+                id: idFavorite
             }
         });
     }
-
-    update(id: any, data: any){
-        return prisma.favoriteGames.update({
-            where: {
-                id: id
-            },
-            data: {
-
-        });
-    }
-
-    delete(id: any){
-        return prisma.favoriteGames.delete({
-            where: {
-                id: id
-            }
-        });
-    }*/
 }
 
 export default new GamesConsults;

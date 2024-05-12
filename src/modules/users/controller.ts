@@ -247,6 +247,10 @@ export async function favoriteGame(req: Request, res: Response){
 
     try {
 
+        const exist = await UsersConsults.existFavorite(idGame, idUser);
+
+        if(exist > 0) throw new Error('Game has been favorited');
+
         await UsersConsults.favoriteGame(idGame, idUser);
 
         return res.status(201).json('Game favorited');

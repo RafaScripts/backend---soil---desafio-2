@@ -33,6 +33,7 @@ async function configureRoutes() {
 app.listen(3000, async () => {
 
   await firstGenerateUsers();
+  console.log('teste');
 
   console.log('Server is running on port 3000');
 });

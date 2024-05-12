@@ -12,6 +12,7 @@ routerGames.post('/games/create', user_check, create);
 routerGames.get('/games/search', user_check, searchGame);
 routerGames.get('/games/search/:id', user_check, searchById);
 routerGames.get('/games/listbyid/:id', user_check, findGamesOfUser);
+routerGames.delete('/games/favorite/delete/:id', user_check, deleteGame);
 
 //Admin Routes
 routerGames.get('/games/findWithUsers', admin_check, findWithUsers);
