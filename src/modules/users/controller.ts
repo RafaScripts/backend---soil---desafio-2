@@ -50,9 +50,6 @@ export async function list(req: Request, res: Response){
 export async function create(req: Request, res: Response){
     // #swagger.tags = ['users']
 
-    /* #swagger.security = [{
-           "bearerAuth": []
-   }] */
 
     /*  #swagger.requestBody = {
             required: true,
@@ -243,7 +240,7 @@ export async function favoriteGame(req: Request, res: Response){
         }
     */
 
-    const {idGame, idUser} = req.body;
+    const {idGame, idUser, platform} = req.body;
 
     try {
 
@@ -251,7 +248,7 @@ export async function favoriteGame(req: Request, res: Response){
 
         if(exist > 0) throw new Error('Game has been favorited');
 
-        await UsersConsults.favoriteGame(idGame, idUser);
+        await UsersConsults.favoriteGame(idGame, idUser, platform);
 
         return res.status(201).json('Game favorited');
     }catch (e: any) {

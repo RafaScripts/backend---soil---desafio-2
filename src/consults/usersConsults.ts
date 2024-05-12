@@ -85,11 +85,12 @@ class UsersConsults{
         });
     }
 
-    favoriteGame(idGame: string, idUser: string){
+    favoriteGame(idGame: string, idUser: string, platform: string){
         return prisma.userFavoriteGame.create({
             data: {
                 userId: idUser,
-                gameId: idGame
+                gameId: idGame,
+                platform: platform
             }
         });
     }
