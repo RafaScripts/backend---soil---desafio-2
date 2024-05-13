@@ -3,8 +3,8 @@ import {Role} from "../models/user_model";
 import bcrypt from "bcrypt";
 
 export async function firstGenerateUsers(){
-    let hashadmin = await bcrypt.hash('admin', 8);
-    let hashuser = await bcrypt.hash('user123', 8);
+    let hashadmin = await bcrypt.hash('123456789', 8);
+    let hashuser = await bcrypt.hash('123456789', 8);
 
     const adm = {
         name: 'jhon',
